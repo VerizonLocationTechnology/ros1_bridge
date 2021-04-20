@@ -170,6 +170,26 @@ custom_executable(simple_bridge_2_to_1 "src/simple_bridge_2_to_1.cpp"
 custom_executable(simple_bridge "src/simple_bridge.cpp"
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "std_msgs")
+  
+custom_executable(comp_image_bridge "src/comp_image_bridge.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "sensor_msgs")
+  
+custom_executable(camera_info_bridge "src/camera_info_bridge.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "sensor_msgs")
+  
+custom_executable(tf_bridge "src/tf_bridge.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "tf2_ros")
+  
+custom_executable(tf_static_bridge "src/tf_static_bridge.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "tf2_ros")
+  
+custom_executable(twist_bridge "src/twist_bridge.cpp"
+  ROS1_DEPENDENCIES 
+  TARGET_DEPENDENCIES "std_msgs" "geometry_msgs")
 
 add_library(${PROJECT_NAME} SHARED
   "src/builtin_interfaces_factories.cpp"
@@ -207,6 +227,13 @@ custom_executable(dynamic_bridge
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES ${ros2_interface_packages})
 target_link_libraries(dynamic_bridge
+  ${PROJECT_NAME})
+  
+custom_executable(robot_bridge
+  "src/robot_bridge.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES ${ros2_interface_packages})
+target_link_libraries(robot_bridge
   ${PROJECT_NAME})
 
 if(TEST_ROS1_BRIDGE)
@@ -284,4 +311,8 @@ install(
 install(
   DIRECTORY resource
   DESTINATION share/${PROJECT_NAME}
+)
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
 )

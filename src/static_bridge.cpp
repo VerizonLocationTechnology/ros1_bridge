@@ -33,17 +33,17 @@
 int main(int argc, char * argv[])
 {
   // ROS 1 node
-  ros::init(argc, argv, "ros_bridge");
+  ros::init(argc, argv, "test_bridge");
   ros::NodeHandle ros1_node;
 
   // ROS 2 node
   rclcpp::init(argc, argv);
-  auto ros2_node = rclcpp::Node::make_shared("ros_bridge");
+  auto ros2_node = rclcpp::Node::make_shared("test_bridge");
 
   // bridge one example topic
-  std::string topic_name = "chatter";
-  std::string ros1_type_name = "std_msgs/String";
-  std::string ros2_type_name = "std_msgs/msg/String";
+  std::string topic_name = "diagnostic";
+  std::string ros1_type_name = "diagnostic_msgs/DiagnosticArray";
+  std::string ros2_type_name = "diagnostic_msgs/msg/DiagnosticArray";
   size_t queue_size = 10;
 
   auto handles = ros1_bridge::create_bidirectional_bridge(

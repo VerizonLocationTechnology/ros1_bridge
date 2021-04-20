@@ -184,7 +184,7 @@ void update_bridge(
     bridge.ros2_type_name = ros2_type_name;
 
     auto ros2_publisher_qos = rclcpp::QoS(rclcpp::KeepLast(10));
-    if (topic_name == "/tf_static") {
+    if (topic_name.rfind("/tf_static") != std::string::npos) {
       ros2_publisher_qos.keep_all();
       ros2_publisher_qos.transient_local();
     }
