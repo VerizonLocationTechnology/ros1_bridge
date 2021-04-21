@@ -205,6 +205,13 @@ custom_executable(dynamic_bridge
   TARGET_DEPENDENCIES ${ros2_interface_packages})
 target_link_libraries(dynamic_bridge
   ${PROJECT_NAME})
+  
+custom_executable(ghost_bridge
+  "src/ghost_bridge.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES ${ros2_interface_packages})
+target_link_libraries(ghost_bridge
+  ${PROJECT_NAME})
 
 if(TEST_ROS1_BRIDGE)
   custom_executable(test_ros2_client_cpp "test/test_ros2_client.cpp")
