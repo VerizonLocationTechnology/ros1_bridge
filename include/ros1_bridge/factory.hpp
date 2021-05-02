@@ -96,6 +96,7 @@ public:
     ops.queue_size = queue_size;
     ops.md5sum = ros::message_traits::md5sum<ROS1_T>();
     ops.datatype = ros::message_traits::datatype<ROS1_T>();
+    ops.transport_hints = ros::TransportHints().unreliable().reliable();
     ops.helper = ros::SubscriptionCallbackHelperPtr(
       new ros::SubscriptionCallbackHelperT<const ros::MessageEvent<ROS1_T const> &>(
         boost::bind(
