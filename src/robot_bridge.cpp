@@ -48,7 +48,6 @@ int main(int argc, char * argv[])
     {"zed2/left/image_rect_color/compressed", "sensor_msgs/CompressedImage", "sensor_msgs/msg/CompressedImage"},
     {"zed2/right/image_rect_color/compressed", "sensor_msgs/CompressedImage", "sensor_msgs/msg/CompressedImage"},
     {"diagnostics", "diagnostic_msgs/DiagnosticArray", "diagnostic_msgs/msg/DiagnosticArray"},
-    {"mcu/state/battery", "sensor_msgs/BatteryState", "sensor_msgs/msg/BatteryState"},
   };
   
   const std::vector<bridge_mapping> ros_2_to_1_bridges = {
